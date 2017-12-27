@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    
+    <dubbo:application name="hessian_test_client" owner="yangwd" />
+    <dubbo:registry address="N/A" /> 
+  
+    <!-- 生成远程服务代理，可以像使用本地bean一样使用demoService -->  
+	<!-- 中间层接口调用 -->
+	<dubbo:reference id="dubboService" protocol="dubbo" url="172.16.186.141:20880" timeout="10000" 
+	   interface="hessian.protocol.test.api.HessianTestService"/>  
+	<dubbo:reference id="hessianService" protocol="hessian" url="172.16.186.141:20881"  timeout="10000" 
+	   interface="hessian.protocol.test.api.HessianTestService"/>  
+</beans>
